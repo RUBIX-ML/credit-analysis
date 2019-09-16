@@ -1,0 +1,85 @@
+RANDOM_FOREST:
+    max_features: 
+        - 0.6
+        - 1.0
+    max_depth: 
+        - 6
+        - 10
+    n_estimators: 
+        - 50
+        - 100
+    min_samples_leaf: 
+        - 2
+
+EXTRA_TREE:
+    max_features: 
+        - 0.6
+        - sqrt
+    max_depth: 
+        - 6
+        - 10
+    n_estimators: 
+        - 50
+        - 100
+    min_samples_leaf: 
+        - 2
+
+ADA_BOOST:
+    learning_rate: 
+        - 0.1
+        - 0.01
+    n_estimators:
+        - 50
+        - 100
+
+
+GRADIENT_BOOST:
+    max_features: 
+        - 0.6
+        - sqrt
+    max_depth: 
+        - 50
+        - 100
+    min_samples_leaf:
+        - 2 
+
+XGB:
+    learning_rate: 
+        - 0.1
+        - 0.01
+    n_estimators:
+        - 50
+        - 100
+    max_depth: 
+        - 50
+        - 100
+    subsample: 
+        - 0.85
+        - 0.9
+    colsample_bytree:
+        - 0.8
+        - 0.9
+
+LGB: 
+    learning_rate: 
+        - 0.1
+        - 0.01
+    n_estimators:
+        - 50
+        - 100
+    num_leaves:
+        - 31
+        - 40
+    subsample: 
+        - 0.8
+    max_depth: 
+        - 20
+        - 50
+    min_data_in_leaf: 
+        - 2
+
+    
+    
+    
+
+    

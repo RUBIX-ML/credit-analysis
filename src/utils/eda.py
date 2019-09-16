@@ -11,16 +11,22 @@ from plots import *
 
 
 def df_summary(df): 
-#     num_cols = df.select_dtypes(include=['int32', 'int64', 'float32', 'float64']).columns
-#     cat_cols = df.select_dtypes(include=['object']).columns
-#     date_cols = df.select_dtypes(include=['datetime']).columns
-#     bool_cols = df.select_dtypes(include=['bool']).columns
+    """
+    Print dataframe summary
 
-#     num_cols = [str(x) for x in num_cols]
-#     cat_cols = [str(x) for x in cat_cols]
-#     date_cols = [str(x) for x in date_cols]
-#     bool_cols = [str(x) for x in bool_cols]
+    Args:
+        df: pd.DataFrame, input data
 
+    Returns:
+        n_obs: number of observations
+        n_features: number of features
+        mem_usage: memory usage
+        num_cols: numerical features
+        cat_cols: categorical features
+        date_cols: datetime features
+        bool_cols: boolean features
+        null_perct: percentage of null cells
+    """
     num_cols = feature_types(df)['num_cols']
     cat_cols = feature_types(df)['cat_cols']
     date_cols = feature_types(df)['date_cols']
@@ -45,6 +51,14 @@ def df_summary(df):
 
 
 def feature_types(df):
+    """
+    Get feature types
+
+    Args:
+        df: pd.DataFrame, input data
+    Returns:
+        f_types: feature type
+    """
     ftypes = {}
     ftypes['num_cols'] = [str(x) for x in df.select_dtypes(include=['int32', 'int64', 'float32', 'float64']).columns]
     ftypes['cat_cols'] = [str(x) for x in df.select_dtypes(include=['object', 'category']).columns]
@@ -53,6 +67,23 @@ def feature_types(df):
     return ftypes
 
 def feature_stats(df, col_type):
+    """
+    Calculate feature statistical information
+
+    Args:
+        df: pd.DataFrame, input data
+        col_type: column/feature type
+
+    Returns:
+        max: max value
+        min: min value
+        median: median value
+        std: standard deviation
+        missing: number of missing values
+        cat: number of categories
+        val_counts: value counts of each category 
+    """
+
     num_cols = feature_types(df)['num_cols']
     cat_cols = feature_types(df)['cat_cols']
     date_cols = feature_types(df)['date_cols']
@@ -89,10 +120,31 @@ def feature_stats(df, col_type):
         return cats, missing, val_counts
     
 def convert_cat_codes(df, convert_cols):
+    """
+    Convert categorical value to one-hot encoding codes
+
+    Args:
+        df: pd.DataFrame, input data
+        conver_cols: columns/features to be converted
+    """
+
     for col in convert_cols:
         df[col] = df[col].cat.codes
     
 def corr_test(df, cols, method, threashold=0):
+    """
+    Test correlations between features
+
+    Args:
+        df: pd.DataFrame, input data
+        cols: columns/features
+        method: calculation method
+        threashold: show columns only has a correlation p > threadhold
+
+    Returns:
+        df_corr: Dataframe of the correlation scores
+    """
+
     df_corr = pd.DataFrame() # Correlation matrix
     df_p = pd.DataFrame()  # Matrix of p-values
     corr_dict = {}
@@ -118,6 +170,18 @@ def corr_test(df, cols, method, threashold=0):
 
 
 def feature_importance(df, y, model, method):
+    """
+    Calculate feature importance
+    Args:
+        df: pd.DataFrame, input data
+        y: test data or predictions
+        model: the model for testing. e.g. random forest
+        method: shuffle or drop feature when calculating scores
+
+    Returns:
+        result: dataframe containing importance scores 
+    """
+
     if model == 'RFC':
         m = RandomForestClassifier(n_estimators=10, max_features=1, min_samples_leaf=5, n_jobs=-1)
     if model == 'RFR':

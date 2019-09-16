@@ -1,5 +1,2 @@
 model,accuracy,precision,recall,f1_score,roc_auc,tn,fp,fn,tp,best_params
-RandomForest,0.815,0.642,0.365,0.466,0.775,4405,270,841,484,"{""max_depth"": 10, ""max_features"": 0.6, ""min_samples_leaf"": 2, ""n_estimators"": 100}"
-LightGBM,0.83,0.701,0.363,0.479,0.792,4509,200,822,469,"{""learning_rate"": 0.1, ""max_depth"": 20, ""min_data_in_leaf"": 2, ""n_estimators"": 50, ""num_leaves"": 31, ""subsample"": 0.8}"
-AdaBoost,0.819,0.682,0.335,0.45,0.777,4469,207,880,444,"{""learning_rate"": 0.1, ""n_estimators"": 100}"
-ExtraTree,0.82,0.673,0.368,0.475,0.774,4432,238,841,489,"{""max_depth"": 10, ""max_features"": 0.6, ""min_samples_leaf"": 2, ""n_estimators"": 100}"
+RandomForest,0.825,0.699,0.377,0.49,0.77,4448,217,832,503,"{""max_depth"": 10, ""max_features"": 0.6, ""n_estimators"": 50}"

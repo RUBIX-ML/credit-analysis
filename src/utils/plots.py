@@ -10,6 +10,12 @@ from sklearn.tree import export_graphviz
 
 
 def missing_value_plot(df):
+    """
+    Plot missing values
+    Args:
+        df: pd.DataFrame, input data
+    """
+
     patterns = ['Nan', 'Null', 'NULL', 'NAN', '']
     col_names = []
     indexes = []
@@ -58,6 +64,12 @@ def missing_value_plot(df):
 
     
 def histogram_plot(df, column):
+    """
+    Plot distributions chart of a column/feature
+    Args:
+        df: pd.DataFrame, input data
+        column: column/feature name
+    """
     trace = go.Histogram(
         x=df[column],
         marker=dict(color='#337ab7'),
@@ -81,6 +93,12 @@ def histogram_plot(df, column):
 
 
 def bar_plot(df):
+    """
+    Plot bar chart
+    Args:
+        df: pd.DataFrame, input data
+    """
+
     traces = []
 
     for i in range(len(x_cols)):
@@ -107,6 +125,12 @@ def bar_plot(df):
 
 
 def correlation_matrix(df):
+    """
+    Plot correlation matrix
+    Args:
+        df: pd.DataFrame, input data
+    """
+
     trace = {
         "type": "heatmap",
         "x": df.columns,
@@ -150,11 +174,11 @@ def feature_importance_plot(df):
     
 
 def draw_tree(t, df, size=70, ratio=4, precision=0):
-    """ Draws a representation of a random forest in IPython.
+    """ 
+    Draws a representation of a random forest in IPython.
 
-    Parameters:
-    -----------
-    t: The tree you wish to draw
+    Args: 
+    t: The tree to draw
     df: The data used to train the tree. This is used to get the names of the features.
     example: draw_tree(m.estimators_[0], X_train, precision=2)
     """

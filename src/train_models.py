@@ -55,12 +55,18 @@ LGB = search_space['LGB']
 
 def proc_data():
     """
+    Processing dataset for model training
     1. Load dataset into pd.DataFrame
     2. Simple feature engineering
         2.1 Convert sparse features to Categorial type
         2.2 Scale dense features to 0 - 1
-    3. Feed into different models
+    3. train test split of dataset
 
+    Returns:
+        X_train: predictors of training data
+        y_train: predictions of training data
+        X_test:  predictors of test data
+        y_test:  predictions of test data
     """
     if not os.path.exists(MODEL_DIR):
         os.mkdir(MODEL_DIR)
@@ -96,10 +102,11 @@ def proc_data():
     
 
 def load_models():
-    """ Load the models with configurations
+    """ 
+    Load the models with parameters
 
     Returns:
-        RandomForest: RF model with params
+        RandomForest: random forest model with params
         ExtraTree: extra_tree model with params
         AdaBoost:  ada_boost model with params
         GradientBoost: gradient boost model with params
@@ -143,11 +150,11 @@ def train_model(model_name, X_train, y_train, X_test, y_test):
     Train the specific model using X_train, y_train, X_test, y_test
 
     Args:
-        model_name: str
-        X_train: pd.DataFrame
-        y_train: np.array
-        X_test: pd.DataFrame
-        y_test: np.array
+        model_name: name of the model
+        X_train: predictors of training data
+        y_train: predictions of training data
+        X_test:  predictors of test data
+        y_test:  predictions of test data
 
     Returns:
         best_model: best model after grid search
@@ -227,6 +234,12 @@ def train_model(model_name, X_train, y_train, X_test, y_test):
 
 
 def run_models():
+    """
+    Train the loaded models and generate report
+    Save model in pkl format
+    Save scores in csv files
+    """
+
     all_metrics = []
     for model_name in MODEL_LIST:
         X_train, y_train, X_test, y_test = proc_data()
@@ -238,5 +251,4 @@ def run_models():
 
     df_all_metrics = pd.concat(all_metrics)
     df_all_metrics.to_csv(f'{REPORT_DIR}/models_metrics.csv', index=False)
-
-    return 0
+    return

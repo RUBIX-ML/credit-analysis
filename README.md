@@ -1,14 +1,14 @@
 # CreditAnalysis
 
-Credit Analysis with Random Forest, Xgboost and LightGBM
+Credit Analysis with a group of models Random Forest, Xgboost and LightGBM, etc.
+The goal is to predict whether a customer if able to pay the full balance in the next month based on historical payment record.
 
-## File structure
-- main.py (main function)
-- plots.py (plotly functions for visualization)
-- eda.py (exploratory data analysis functions)
-- EDA_Report.htm (Feature Engineering process, data wrangling and EDA visualizations)
-- Docs/metrics-result.png (Final Scores)
-- notebooks (individual jupyter notebooks of RF and Boosting model training and testing)
+# Methodology
+* Run exploratory analysis such as feature importance to aid feature selection.
+* Use grid search to find the best hyper-parameters of different models.
+* Automate training and testing process and visualize the results.
+
+
 
 ## Data source
 - data.csv
@@ -29,50 +29,99 @@ Attribute Information:
 * X17 = amount of bill statement in April, 2005. 
 * X18-X23: Amount of previous payment (NT dollar). X18 = amount paid in September, 2005; X19 = amount paid in August, 2005; . . .;X23 = amount paid in April, 2005. 
 
-## Main function uses grid search to tune the hyperparameters of different models. 
-### Before runing the program:
+# Install & Verify
+## Install dependencies with pip
+`pip install -r requirement.txt`
 
-1. Edit your configurations in [main.py](main.py)
+## Packaging
+Refer to this link to make an installable python project package
 
-    ```python
-    # output dir of trained models
-    MODEL_DIR = 'tmp-model'
-    # training data file path
-    DATA_FILE_PATH = 'credits.csv'
-    # number of cross-validation folds
-    N_CV_FOLDS = 5
-    # the ratio of test data set
-    TEST_RATIO = 0.2
+https://packaging.python.org/tutorials/packaging-projects/
 
-    # the target to be predicted
-    COL_LABEL = 'default payment next month'
-    # numberical feature names
-    DENSE_FEATURES = ['LIMIT_BAL', 'AGE', 'BILL_AMT1', 'PAY_AMT1']
-    # categorical feature names
-    SPARSE_FEATURES = ['SEX', 'EDUCATION', 'MARRIAGE',
-                    'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6']
-    # list of models to be trained
-    MODEL_LIST = ['extra_tree', 'ada_boost', 'random_forest', 'lgb']
-    ```
 
-2. (optional) Edit your grid search hyperparameters for specific models in `load_models()` of [main.py](main.py)
-    ``` python
-    def load_models():
-        return {
-            ...,
-            'random_forest': {
-                'model_fn': lambda: RandomForestClassifier(n_jobs=-1),
-                'params': {
-                    'n_estimators': [50, 100, 150],
-                    # 'warm_start': True,
-                    # # 'max_features': 1.0,
-                    # 'max_depth': 6,
-                    # 'min_samples_leaf': 2,
-                    # 'max_features': 'sqrt',
-                }
-            },
-            ...
-        }
-    ```
-3. Run `python main.py` to train models. It will output the metrics for different models evaluated on the test dataset. Please check `{MODEL_DIR}` for more details.
-   ![model results](./docs/metrics-result.png)
+# Config files
+## Before runing the program:
+
+### Edit your configurations in config/config.yml
+
+**Example:**
+
+**MODEL_DIR:** `'../models'`
+
+**MODEL_LIST:**
+
+  `- 'RandomForest'`
+ 
+  `- 'LightGBM'`
+  
+  `- 'AdaBoost'`
+  
+  `- 'ExtraTree'`
+  
+**DATA_FILE_PATH: **`'../data/raw/credits.csv'`
+
+**REPORT_DIR: **`'../reports'`
+
+**FIGURES_DIR:** `'../reports/figures'`
+
+**N_CV_FOLDS:** `5`
+
+**TEST_RATIO:** `0.2`
+
+**COL_LABEL:** `'default payment next month'`
+
+**DENSE_FEATURES:**
+  
+  `- 'LIMIT_BAL'`
+ 
+ `- 'AGE'`
+ 
+**SPARSE_FEATURES:**
+
+  `- 'SEX'`
+  
+ ` - 'EDUCATION'`
+ 
+ `- 'MARRIAGE'`
+ 
+
+
+### Edit your grid search configs in config/space_search.yml
+
+**Example:**
+
+**RANDOM_FOREST:**
+       
+   **max_features:**
+   
+   `- 0.6`
+   
+   `- 1.0`
+    
+   **max_depth:**
+   
+   `- 6`
+        
+   `- 10`
+        
+   **n_estimators:**
+       
+   `- 50`
+        
+   `- 100`
+ 
+# Run program
+
+**After adding configs to config.yml and search_space.yml, run the application by issuing the following command:**
+
+`./run_application`
+
+**The results are located in `Reports` directory**
+
+**Models with best results are located in `models` directory**
+
+## Run tests
+ Test cases are located in `test` directory with sample config files
+ Run test case with following command:
+ `python3 test_models.py` 
+ 

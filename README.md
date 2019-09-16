@@ -31,7 +31,7 @@ Attribute Information:
 
 # Install & Verify
 ## Install dependencies with pip
-`pip install -r requirement.txt`
+`pip install -r requirements.txt`
 
 ## Packaging
 Refer to this link to make an installable python project package
@@ -41,7 +41,7 @@ https://packaging.python.org/tutorials/packaging-projects/
 
 
 # Adding Configurations
-## Before runing the program:
+### Before runing the program:
 
 ### Edit your configurations in config/config.yml
 

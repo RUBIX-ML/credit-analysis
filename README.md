@@ -39,7 +39,8 @@ Refer to this link to make an installable python project package
 https://packaging.python.org/tutorials/packaging-projects/
 
 
-# Config files
+
+# Adding Configurations
 ## Before runing the program:
 
 ### Edit your configurations in config/config.yml
@@ -123,5 +124,6 @@ https://packaging.python.org/tutorials/packaging-projects/
 ## Run tests
  Test cases are located in `test` directory with sample config files
  Run test case with following command:
+
  `python3 test_models.py` 
  

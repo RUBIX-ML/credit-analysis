@@ -59,9 +59,9 @@ https://packaging.python.org/tutorials/packaging-projects/
   
   `- 'ExtraTree'`
   
-**DATA_FILE_PATH: **`'../data/raw/credits.csv'`
+**DATA_FILE_PATH:** `'../data/raw/credits.csv'`
 
-**REPORT_DIR: **`'../reports'`
+**REPORT_DIR:** `'../reports'`
 
 **FIGURES_DIR:** `'../reports/figures'`
 

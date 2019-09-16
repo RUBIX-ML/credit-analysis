@@ -4,6 +4,9 @@ MODEL_DIR: '../../models'
 # models to run
 MODEL_LIST:
   - 'RandomForest'
+  - 'LightGBM'
+  - 'AdaBoost'
+  - 'ExtraTree'
 # training data file path
 DATA_FILE_PATH: '../../data/raw/credits.csv'
 # training reports path

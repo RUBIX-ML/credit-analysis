@@ -9,6 +9,7 @@ RANDOM_FOREST:
         - 20
         - 50
 
+
 EXTRA_TREE:
     max_features: 
         - 0.6
@@ -19,6 +20,7 @@ EXTRA_TREE:
     n_estimators: 
         - 50
         - 100
+
 
 ADA_BOOST:
     learning_rate: 
@@ -39,6 +41,7 @@ GRADIENT_BOOST:
     min_samples_leaf:
         - 2 
 
+
 XGB:
     learning_rate: 
         - 0.1
@@ -55,6 +58,7 @@ XGB:
     colsample_bytree:
         - 0.8
         - 0.9
+
 
 LGB: 
     learning_rate: 

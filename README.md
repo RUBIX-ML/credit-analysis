@@ -119,6 +119,8 @@ https://packaging.python.org/tutorials/packaging-projects/
 
 **The results are located in `Reports` directory**
 
+![model results](./reports/figures/metrics-result.png)
+
 **Models with best results are located in `models` directory**
 
 ## Run tests

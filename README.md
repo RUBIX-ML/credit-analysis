@@ -112,14 +112,31 @@ https://packaging.python.org/tutorials/packaging-projects/
    `- 100`
  
 # Run program
+**For each task, please create a folder with task name under `config` directory (e.g. `config/credit`) then put `config.yml` and `search_space.yml` in this directory.**
+
+
+**Put the data file under `data/raw/` directory.**
+
 
 **After adding configs to config.yml and search_space.yml, run the application by issuing the following command:**
 
-`./run_application`
 
-**The results are located in `Reports` directory**
+`python3 main.py -t <task name> -i <data file name>`
 
-![model results](./reports/figures/metrics-result.png)
+
+Example command:
+
+`python3 main.py -t credit -i credits.csv`
+
+
+
+
+**The results are located in `Reports/<task name>`  and  `Reports/figures/<task name>/` directories**
+
+
+
+
+![model results](./reports/figures/sample_metrics-result.png)
 
 **Models with best results are located in `models` directory**
 

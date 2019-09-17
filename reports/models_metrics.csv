@@ -1,2 +1,0 @@
-model,accuracy,precision,recall,f1_score,roc_auc,tn,fp,fn,tp,best_params
-RandomForest,0.825,0.699,0.377,0.49,0.77,4448,217,832,503,"{""max_depth"": 10, ""max_features"": 0.6, ""n_estimators"": 50}"

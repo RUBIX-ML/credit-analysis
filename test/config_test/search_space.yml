@@ -69,7 +69,7 @@ LGB:
         - 100
     num_leaves:
         - 31
-        - 40
+        - 41
     subsample: 
         - 0.8
     max_depth: 

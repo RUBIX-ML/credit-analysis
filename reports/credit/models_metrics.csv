@@ -1,0 +1,3 @@
+model,accuracy,precision,recall,f1_score,roc_auc,tn,fp,fn,tp,best_params
+RANDOM_FOREST,0.822,0.672,0.367,0.475,0.777,4453,235,830,482,"{""max_depth"": 10, ""max_features"": 0.6, ""min_samples_leaf"": 2, ""n_estimators"": 100}"
+LGB,0.823,0.688,0.373,0.483,0.781,4438,226,838,498,"{""learning_rate"": 0.1, ""max_depth"": 20, ""min_data_in_leaf"": 2, ""n_estimators"": 50, ""num_leaves"": 31, ""subsample"": 0.8}"

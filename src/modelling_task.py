@@ -1,22 +1,13 @@
 from collections import OrderedDict
 import pickle
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_auc_score
 from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, LabelEncoder
-import numpy as np
-import pandas as pd
-from lightgbm import LGBMClassifier
-from xgboost import XGBClassifier
-import xgboost as xgb
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.linear_model import LogisticRegression
 import sys, os, logging, json, yaml
+from src.utils.import_models import *
 
 
 class Task():

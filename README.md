@@ -150,12 +150,12 @@ Example command:
 **Models with best results are located in `models` directory**
 
 ## Adding new Models
-After installing new models and algorithms, just add the new model in import.py and config.yml to load the model in the tasks
+After installing new models and algorithms, just add the new model in `import.py` and `config.yml` to load the model in the tasks.
 
-- Add model package in import_models.py.
+- Add model package in `import_models.py`.
   * Example: `from scklearn import <model_name>`
-- Add new models in the config files(config.yml: MODEL_LIST)
-- Define what models to run by the task in config.yml: RUN_MODELS
+- Add new models in the config files - `config.yml: MODEL_LIST`
+- Define what models to run by the task in `config.yml: RUN_MODELS`
 
 ## Run tests
  Test cases are located in `test` directory with sample config files

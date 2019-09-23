@@ -1,0 +1,63 @@
+# Name of the task
+TASK_NAME: credit
+
+# output dir of trained models
+MODEL_DIR: 'models'
+
+# training reports path
+REPORT_DIR: 'reports'
+
+# report figures path
+FIGURES_DIR: 'reports/figures'
+
+# # available models
+MODEL_LIST:
+  RANDOM_FOREST:
+    model_fn: RandomForestClassifier()
+  EXTRA_TREE:
+    model_fn: ExtraTreesClassifier()
+  ADA_BOOST: 
+    model_fn: daBoostClassifier()
+  GRADIENT_BOOST: 
+    model_fn: GradientBoostingClassifier()
+  XGB: 
+    model_fn: XGBClassifier()
+  LGB: 
+    model_fn: LGBMClassifier()
+
+# models to run
+RUN_MODELS:
+  - 'RANDOM_FOREST'
+  - 'LGB'
+  
+# # training data file path
+# DATA_FILE_PATH: '../data/raw/'
+
+
+# number of cross-validation folds
+N_CV_FOLDS: 2
+# the ratio of test data set
+TEST_RATIO: 0.2
+# the target to be predicted
+COL_LABEL: 'default payment next month'
+# numberical feature names
+DENSE_FEATURES:
+  - 'LIMIT_BAL'
+  - 'AGE'
+  - 'BILL_AMT1'
+  - 'PAY_AMT1'
+# categorical feature names
+SPARSE_FEATURES:
+  - 'SEX'
+  - 'EDUCATION'
+  - 'MARRIAGE'
+  - 'PAY_0'
+  - 'PAY_2'
+  - 'PAY_3'
+  - 'PAY_4'
+  - 'PAY_5'
+  - 'PAY_6'
+
+
+
+

@@ -1,3 +1,8 @@
 model,accuracy,precision,recall,f1_score,roc_auc,tn,fp,fn,tp,best_params
+<<<<<<< HEAD
 RANDOM_FOREST,0.815,0.674,0.355,0.465,0.786,4409,233,876,482,"{""max_depth"": 8, ""max_features"": 0.6, ""min_samples_leaf"": 10, ""n_estimators"": 100}"
 LGB,0.816,0.644,0.362,0.464,0.776,4419,264,840,477,"{""learning_rate"": 0.1, ""max_depth"": 8, ""min_child_samples"": 20, ""n_estimators"": 50, ""num_leaves"": 200, ""subsample"": 0.8}"
+=======
+RANDOM_FOREST,0.821,0.694,0.367,0.48,0.782,4433,218,854,495,"{""max_depth"": 10, ""max_features"": 0.6, ""min_samples_leaf"": 2, ""n_estimators"": 100}"
+LGB,0.819,0.671,0.342,0.453,0.781,4464,221,865,450,"{""learning_rate"": 0.1, ""max_depth"": 20, ""min_data_in_leaf"": 2, ""n_estimators"": 50, ""num_leaves"": 31, ""subsample"": 0.8}"
+>>>>>>> a8f28c947294e4da421f29ad9c826a551a5fda57

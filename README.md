@@ -121,12 +121,12 @@ https://packaging.python.org/tutorials/packaging-projects/
 **After adding configs to config.yml and search_space.yml, run the application by issuing the following command:**
 
 
-`python3 main.py -t <task name> -i <data file name>`
+`python3 main.py <task name> <data file name>`
 
 
 Example command:
 
-`python3 main.py -t credit -i credits.csv`
+`python3 main.py credit  credits.csv`
 
 
 

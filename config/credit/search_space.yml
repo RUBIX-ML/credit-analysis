@@ -4,12 +4,13 @@ RANDOM_FOREST:
         - 1.0
     max_depth: 
         - 6
-        - 10
+        - 8
     n_estimators: 
         - 50
         - 100
     min_samples_leaf: 
-        - 2
+        - 10
+        - 20
 
 EXTRA_TREE:
     max_features: 
@@ -68,16 +69,14 @@ LGB:
         - 50
         - 100
     num_leaves:
-        - 31
-        - 41
+        - 200
+        - 230
     subsample: 
         - 0.8
     max_depth: 
+        - 8
+    min_child_samples: 
         - 20
-        - 50
-    min_data_in_leaf: 
-        - 2
-
     
     
     

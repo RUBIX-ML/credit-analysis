@@ -1,25 +1,22 @@
-from src.modelling_task import Task
-import sys, getopt
+from src.task import Task
+import sys, getopt, argparse
+
 
 def main(argv):
-   task = ''
-   data = ''
-   try:
-      opts, args = getopt.getopt(argv,"ht:i:",["task=","data="])
-   except getopt.GetoptError:
-      print ('Incorrect command! usage: python3 main.py -t <task name> -i <data file name>')
-      sys.exit(2)
-   for opt, arg in opts:
-      if opt == '-h':
-         print ('main.py -t <task> -i <data>')
-         sys.exit()
-      elif opt in ("-t", "--task"):
-         task = arg
-      elif opt in ("-i", "--data"):
-         data = arg
-   print ('Task name is:', task, 'Data file is "', data)
-   
-   task = Task(name=task, data=data)
+   """Receive args from command line and pass them to the task instance 
+   """
+   # Create the parser
+   parser = argparse.ArgumentParser(description='Run the task of grid search')
+
+   # Add the arguments
+   parser.add_argument('task',type=str, help=' - name of the task')
+   parser.add_argument('file',type=str, help=' - file name of the data file')
+
+   # Execute the parse_args() method
+   task_name = parser.parse_args().task
+   file_name = parser.parse_args().file
+
+   task = Task(task_name, file_name)
    task.run_models()
     
 if __name__ == "__main__":

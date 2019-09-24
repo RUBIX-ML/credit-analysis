@@ -17,7 +17,17 @@ The goal is to predict whether a customer if able to pay the full balance in the
 - Model training and reporting functions/code are closed to modification in future model expansion process
 - Adding new models only requires modifications in config files (config.yml)
 
-
+## Code structure and explanations 
+- The `main()` function creates an instance/object of `Task` class.
+- `Task` class invokes `Classifier` class and creates an instance of `Classifier` class to run the classification algorithms.
+- `Classifier` class has a group of methods to read configs and hyperparameter search space from Task class and use its methods to train the model and generate report.
+- Supported algorithms are `Random Forest`, `Etra Tree`, `Ada Boost`, `Gradient Boost`, `Xgboost`, `LightGBM`
+- `config.yml` contains the configuration for task resource. e.g. task name, file and directory locations and models to use.
+- `search_space.yml` contains the hyperparameters for model training with `grid search` algorithm. All parameters are configurable to customize the `search space`.
+- `Metrics` are saved in `reports` directory, under the task folder, including `Model_metrics`  -- best `accuracy` and `AUC`scores of all the models, `prediction results` and `feature importance` of individual models,  `histograms` of `predicted probability` of `each class/label` for each model 
+- Trained models with best scores are saved in `Models` directory for future use. 
+- `EDA reports` contains an example of `Exploratory Data Analysis` process, including `feature engineering`, `feature importance`, `feature correlation` and other analysis with visualizations to present results.
+- `Notebooks` are the example source `jupyter notebook` files of `EDA` and `model training`. 
 
 ## Data source
 - data.csv
@@ -153,12 +163,32 @@ Example command:
 After installing new models and algorithms, just add the new model in `import.py` and `config.yml` to load the model in the tasks.
 
 - Add model package in `import_models.py`.
-  * Example: `from scklearn import <model_name>`
+  * Example: `from sklearn import <model_name>`
 - Add new models in the config files - `config.yml: MODEL_LIST`
 - Define what models to run by the task in `config.yml: RUN_MODELS`
 
-## Run tests
- Test cases are located in `test` directory with sample config files
- Run test case with following command:
 
- `python3 test_models.py`
+
+## Testing
+ Test cases are located in `test` directory with sample config files
+ 
+#### Unit test 
+ 
+ 1. Put testing config files in to `test/unit_test/` directory
+ 2. Run test with the following commands:
+
+    `python3 unit_test.py`
+
+
+ #### Config test:
+ 1. Put testing config files in to `test/config_test/` directory
+ 2. Run test with the following commands:
+   
+    `cd test/config_test`
+
+    `python3 config_test.py`
+
+
+
+
+Note: Config test will only test loading and reading configuration files and validate the values of hyperparameters.

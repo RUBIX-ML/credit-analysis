@@ -38,11 +38,6 @@ class Classifier():
         """Read data file
             DATA_PATH is passed from task.config
         """
-
-        # if not os.path.exists(self.DATA_PATH):
-        #     sys.exit('File not found!')
-
-        #df_raw = pd.read_csv(self.DATA_PATH)
         df = feature_transform(self.data, self.CONFIG)
         X_train, y_train, X_test, y_test = split_datasets(df, self.CONFIG)
 
@@ -56,7 +51,7 @@ class Classifier():
             model_name: name of the model
 
         Returns:
-            model: model function
+            model: model function,
             param_grid: the parameter grid for grid search
         """
 
@@ -72,11 +67,11 @@ class Classifier():
             model_name: name of the model
 
         Returns:
-            model_name: name of the model
-            grid_cv: grid cross validation result
-            best_model: best model after grid search_space
-            X_test:  predictors of test data
-            y_test:  predictions of test data
+            model_name: name of the model,
+            grid_cv: grid cross validation result,
+            best_model: best model after grid search_space,
+            X_test:  predictors of test data,
+            y_test:  predictions of test data.
         """
         
         logger.info('============= Start Grid CV: ({}) ==================='.format(model_name))
@@ -107,11 +102,11 @@ class Classifier():
         """Generate metrics of model training and create reports
 
         Args:
-            model_name: name of the model
-            grid_cv: grid cross validation result
-            best_model: best model after grid search_space
-            X_test:  predictors of test data
-            y_test:  predictions of test data
+            model_name: name of the model,
+            grid_cv: grid cross validation result,
+            best_model: best model after grid search_space,
+            X_test:  predictors of test data,
+            y_test:  predictions of test data.
 
         Returns:
             df_metrics: all metrics in a dataframe

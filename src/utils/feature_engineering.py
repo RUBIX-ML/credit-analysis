@@ -7,8 +7,8 @@ import pandas as pd
 
 def feature_transform(df, CONFIG):
     """Processing dataset for model training
-    1. Load dataset into pd.DataFrame
-    2. Convert sparse features to Categorial type
+        Load dataset into pd.DataFrame,
+        Convert sparse features to Categorial type
 
     Returns:
         df(pd.Dataframe): dataframe with transformed feature types
@@ -36,14 +36,14 @@ def split_datasets(df, CONFIG):
         Splite datasets for training and testing
 
         Args:
-            df (pandas dataframe): data frame read from raw data
+            df (pandas dataframe): data frame read from raw data,
             CONFIG (dict): configurations of task
 
         Returns:
-            X_train: predictors of training data
-            y_train: predictions of training data
-            X_test:  predictors of test data
-            y_test:  predictions of test data
+            X_train: predictors of training data,
+            y_train: predictions of training data,
+            X_test:  predictors of test data,
+            y_test:  predictions of test data.
     """
 
     train_set, test_set = train_test_split(df, test_size=CONFIG['TEST_RATIO'])
@@ -59,11 +59,12 @@ def gen_feature_importance(CONFIG, model_name, X_train, best_model):
     """Generate feature importance report for best model
 
     Args:
-        CONFIG (dict): configurations for model training task 
-        model_name: name of the model
-        best_model: model with the highest scores
-        X_train: predictors of training data
+        CONFIG (dict): configurations for model training task, 
+        model_name: name of the model,
+        best_model: model with the highest scores,
+        X_train: predictors of training data.
     """
+
     if hasattr(best_model, 'feature_importances_'):
             feature_data = OrderedDict()
             feature_data['feature'] = X_train.columns

@@ -11,12 +11,12 @@ from src.classifier import Classifier
 class Task():
     """Class of a task to run the entire process
     Attributes:
-        task_name (str): name of the task
-        file_name (str): name of the input data file
-        CONFIG_PATH (str): path of the config files
-        DATA_PATH (str): path of the data file
-        CONFIG(dict): configurations loaded from yml
-        SEARCH_SPACE(dict): search parameters for grid search, loaded from yml
+        task_name (str): name of the task,
+        file_name (str): name of the input data file,
+        CONFIG_PATH (str): path of the config files,
+        DATA_PATH (str): path of the data file,
+        CONFIG(dict): configurations loaded from yml,
+        SEARCH_SPACE(dict): search parameters for grid search, loaded from yml.
     """
     def __init__(self, task_name, file_name):
         self.task_name = task_name
@@ -28,8 +28,8 @@ class Task():
         
     def load_config(self):
         """Processing configuration files
-            Read .yml config files
-            Assign directories to each task and update configs
+            Read .yml config files,
+            Assign directories to each task and update configs.
         """
 
         config_file = os.path.join(self.CONFIG_PATH, 'config.yml')
@@ -59,15 +59,15 @@ class Task():
 
     def run_models(self):
         """run all the models defined in confi file
-        Save model in pkl format
-        Save scores in csv files
+            Save model in pkl format,
+            Save scores in csv files.
         
         Params:
-            CONFIG (dict): configurations of task
-            SEARCH_SPACE (dict): hyperparameters of models
-            df (pandas dataframe): data frame read from raw data
-            model: Classifier instance
-            all_metrics (list): list to save all model training results
+            CONFIG (dict): configurations of task,
+            SEARCH_SPACE (dict): hyperparameters of models,
+            df (pandas dataframe): data frame read from raw data,
+            model: Classifier instance,
+            all_metrics (list): list to save all model training results.
         """
 
         CONFIG = self.load_config()

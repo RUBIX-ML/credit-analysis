@@ -10,9 +10,16 @@ def main():
     """Use testing config and data file to create a task instance
         Run task and train the models
     """
-    task = Task('unit_test', 'test_data.csv')
-    task.run_models()
     
+    print("**************Starting Unit Test!***************")
+    
+    try:
+        task = Task('unit_test', 'test_data.csv')
+        task.run_models()
+        print("**************Unit test Passed!**************")
+
+    except:
+        print('Cannot complete the test case, test failed')
 
 if __name__ == "__main__":
     main()

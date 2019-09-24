@@ -47,10 +47,14 @@ class Config():
 
         
 def main():
-    config = Config()
-    config.load_config()
-    config.get_config()
-    
+    print("**************Starting Config Test!**********")
+    try:
+        config = Config()
+        config.load_config()
+        config.get_config()
+        print("**************Config Test Passed!**********")
+    except:
+        print('Test failed!')
 
 if __name__ == "__main__":
     main()

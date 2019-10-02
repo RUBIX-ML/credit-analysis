@@ -10,7 +10,7 @@ def main():
     """Use testing config and data file to create a task instance
         Run task and train the models
     """
-    
+
     print("**************Starting Unit Test!***************")
     
     try:
@@ -23,3 +23,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

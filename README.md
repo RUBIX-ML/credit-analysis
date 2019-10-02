@@ -1,21 +1,80 @@
-# CreditAnalysis
+# Project Overview
 
-Credit Analysis with a group of models Random Forest, Xgboost and LightGBM, etc.
-The goal is to predict whether a customer if able to pay the full balance in the next month based on historical payment record.
+The project implements an application to predict the next payment(whether a customer is able to pay the full balance) of credit card users based on 6 months historical payment and spending records.
+
 
 # Methodology
+  
+
+## Requirement analysis
+The prediction is a binary classification task which produces outputs as 0 and 1.
+0 - The customer will pay the full balance
+1 - The customer will not pay the full balance
+
+### Out of scope
+The data set doesn't contain any late payment information so late payment will not be considered.
+
+
+#### Application requirements
+
 ##### Automate ML
 -  Run exploratory analysis such as feature importance to aid feature selection.
 -  Use grid search to find the best hyper-parameters of different models.
 -  Automate training and testing process and visualize the results.
 
 ##### Simple to Use
-- Simply use the config template to create tasks then run the job to get the best results
-- Provide interim analysis results. e.g. Feature engineering, AUC score, histograms
+- Simply use the config template to create tasks then run the job to get the best results.
+- Provide interim analysis results. e.g. Feature engineering, AUC score, histograms.
 
 ##### Open/Close Principle - Easy to expand
-- Model training and reporting functions/code are closed to modification in future model expansion process
-- Adding new models only requires modifications in config files (config.yml)
+- Model training and reporting functions/code are closed to modification in future model expansion process.
+- Adding new models only requires modifications in config files.
+
+
+
+## Model Evaluation and Validation
+The source data has the following natures:
+1. Contains both numerical and categorical features
+2. Non-linear correlation or no correlation between some features. e.g. Marriage and Education, age and balance.
+3. The prediction is a binary class
+4. The 2 classes in the source data are imbalanced. More positive class than negative class.
+5. The dataset contains only 6 historical records of each customer.
+6. Statistical analysis shows no significant important feature(s) to the prediction.
+      
+
+Based on the nature of the data and statistical analysis result, the following models are good options to this task:
+
+#### Ensemble tree models 
+The models combines several decision trees to produce better predictive performance than utilizing a single decision tree. The main principle behind the ensemble models is that a group of weak learners come together to form a strong learner.
+
+techniques to perform ensemble decision trees:
+1. Bagging
+   Random Forest
+
+2. Gradient Boosting
+   Xgboost, LightGBM and Catboost
+
+
+
+#### Justification
+According to the result of cross validation with grid search, Xgboost, LightGBM and Catboost achieved similar performance, with Accuracy > 0.825, AUC > 0.68
+The draw back is that gradient boosting models require more  hyperparameter tuning to find the optimal values.
+
+Random forest achieved a slightly lower accuracy: 0.82 
+This indicates that Gradient Boosting models has better performance than Random forest classifier. Gradient boost models support choosing various loss functions and reduce errors accordingly.
+ 
+
+## Conclusion
+Considering the skewness of the source data and the limited features it contains. The models achieved acceptable predictions. Hyperparameter tuning shows that a small learning rate(0.01 ~ 0.02 in this dataset) with large iterations/number of trees (100 ~ 200) gave a good result.
+
+
+## Improvements
+Classes can be balanced while creating training and testing dataset. This may result better accuracy. Such functionality will be implemented in the next update.
+
+Grid search uses discrete hyperparameter values in the manually defined search domain. Some hyperparameters' optimal value could be missed. Different tunners such as TPE, Random Search and Anneal can be tested to support continuos values in search space.
+##### Reference: 
+https://github.com/microsoft/nni/blob/master/docs/en_US/Tuner/BuiltinTuner.md#
+
 
 ## Code structure and explanations 
 - The `main()` function creates an instance/object of `Task` class.
@@ -24,7 +83,7 @@ The goal is to predict whether a customer if able to pay the full balance in the
 - Supported algorithms are `Random Forest`, `Etra Tree`, `Ada Boost`, `Gradient Boost`, `Xgboost`, `LightGBM`
 - `config.yml` contains the configuration for task resource. e.g. task name, file and directory locations and models to use.
 - `search_space.yml` contains the hyperparameters for model training with `grid search` algorithm. All parameters are configurable to customize the `search space`.
-- `Metrics` are saved in `reports` directory, under the task folder, including `Model_metrics`  -- best `accuracy` and `AUC`scores of all the models, `prediction results` and `feature importance` of individual models,  `histograms` of `predicted probability` of `each class/label` for each model 
+- `Metrics` are saved in `reports` directory, under the task folder, including `Model_metrics`  -- best `accuracy` and `AUC`scores of all the models, `prediction results` and `feature importance` of individual models,  `histograms` of `predicted probability` of `each class/label` for each model. 
 - `Trained models` with best scores are saved in `Models` directory for future use. 
 - `EDA reports` contains an example of `Exploratory Data Analysis`, including `feature engineering`, `feature importance`, `feature correlation` and other analysis with visualizations to present results.
 - `Notebooks` are example source `jupyter notebook` files of `EDA` and `model training`. 
@@ -53,14 +112,14 @@ Attribute Information:
 `pip install -r requirements.txt`
 
 ## Packaging
-Refer to this link to make an installable python project package
+Refer to this link to make an installable python project package.
 
 https://packaging.python.org/tutorials/packaging-projects/
 
 
 
 # Adding Configurations
-### Before runing the program:
+### Before running the program:
 
 ### Edit your configurations in config/config.yml
 
@@ -170,11 +229,11 @@ After installing new models and algorithms, just add the new model in `import.py
 
 
 ## Testing
- Test cases are located in `test` directory with sample config files
+ Test cases are located in `test` directory with sample config files.
  
 #### Unit test 
  
- 1. Put testing config files in to `test/unit_test/` directory
+ 1. Put testing config files in to `test/unit_test/` directory.
  2. Run test with the following commands:
    
     `cd test/unit_test`
@@ -184,7 +243,7 @@ After installing new models and algorithms, just add the new model in `import.py
 
 
  #### Config test:
- 1. Put testing config files in `test/config_test/` directory
+ 1. Put testing config files in `test/config_test/` directory.
  2. Run test with the following commands:
    
     `cd test/config_test`

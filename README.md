@@ -10,7 +10,9 @@ The project implements an application to predict the next payment(whether a cust
 The prediction is a binary classification task which produces outputs as 0 and 1.
 
 0 - The customer will pay the full balance
+
 1 - The customer will not pay the full balance
+
 
 ### Out of scope
 The data set doesn't contain any late payment information so late payment will not be considered.
@@ -38,7 +40,7 @@ The source data has the following natures:
 1. Contains both numerical and categorical features
 2. Non-linear correlation or no correlation between some features. e.g. Marriage and Education, age and balance.
 3. The prediction is a binary class
-4. The 2 classes in the source data are imbalanced. More positive class than negative class.
+4. The predictions(output classes) in the source data are imbalanced. More positive values than negative values.
 5. The dataset contains only 6 historical records of each customer.
 6. Statistical analysis shows no significant important feature(s) to the prediction.
       

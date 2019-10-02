@@ -6,8 +6,9 @@ The project implements an application to predict the next payment(whether a cust
 # Methodology
   
 
-## Requirement analysis
+## Requirements
 The prediction is a binary classification task which produces outputs as 0 and 1.
+
 0 - The customer will pay the full balance
 1 - The customer will not pay the full balance
 
